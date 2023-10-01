@@ -12,6 +12,6 @@
         echo "Ini hari $d <br>";
     echo $d. " ". $date;
     ?>
-    //command
+    
 </body>
 </html>
