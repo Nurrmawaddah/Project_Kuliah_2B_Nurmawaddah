@@ -8,8 +8,10 @@
 <body>
 <?php
     for($a=0; $a < 100; $a++){
-        if($a %2 == 0) continue;
-        else echo "$, ";
+        if($a %2 == 0) 
+        continue;
+        else 
+        echo "$, ";
     }
     ?>
 </body>
