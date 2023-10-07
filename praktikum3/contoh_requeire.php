@@ -4,4 +4,5 @@
     {
         echo "<b>$teks</b>";
     }
+    // tidak ada output
 ?>
