@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kalkulator Sederhana</title>
+    <title>Hasil Kalkulasi</title>
 </head>
 <body>
-    <h1>Kalkulator Sederhana</h1>
-    <form method="get" action="hasil.php">
-        <label>Masukkan Angka Pertama: </label>
-        <input type="text" name="angka1" required><br><br>
+    <h1>Hasil Kalkulasi</h1>
+    <?php
+    if(isset($_GET['angka1']) && isset($_GET['angka2']) && isset($_GET['operasi'])) {
+        $angka1 = $_GET['angka1'];
+        $angka2 = $_GET['angka2'];
+        $operasi = $_GET['operasi'];
 
-        <label>Pilih Operasi: </label>
-        <select name="operasi" required>
-            <option value="penjumlahan">+</option>
-            <option value="pengurangan">-</option>
-            <option value="pembagian">/</option>
-            <option value="perkalian">*</option>
-        </select><br><br>
 
-        <label>Masukkan Angka Kedua: </label>
-        <input type="text" name="angka2" required><br><br>
-        
-        <input type="submit" name="hitung" value="Hitung">
-        <input type="reset" name="reset" value="reset">
-    </form>
+        switch ($operasi) {
+            case 'penjumlahan':
+                $hasil = $angka1 + $angka2;
+                echo "Hasil penjumlahan: $hasil";
+                break;
+            case 'pengurangan':
+                $hasil = $angka1 - $angka2;
+                echo "Hasil pengurangan: $hasil";
+                break;
+            case 'pembagian':
+                if($angka2 != 0) {
+                    $hasil = $angka1 / $angka2;
+                    echo "Hasil pembagian: $hasil";
+                } else {
+                    echo "Pembagian oleh nol tidak valid.";
+                }
+                break;
+            case 'perkalian':
+                $hasil = $angka1 * $angka2;
+                echo "Hasil perkalian: $hasil";
+                break;
+            default:
+                echo "Operasi tidak valid.";
+        }
+    } else {
+        echo "Masukkan kedua angka dan pilih operasi terlebih dahulu.";
+    }
+    ?>
 </body>
 </html>
