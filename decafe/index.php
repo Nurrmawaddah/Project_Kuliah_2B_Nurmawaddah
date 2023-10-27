@@ -9,77 +9,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body>
+<body style="height: 3000px">
     <!-- header -->
-    <nav class="navbar navbar-expand bg-primary navbar-dark">
-        <div class="container-lg">
-            <a class="navbar-brand" href="#"><i class="bi bi-cup-hot"></i>DeCafe</a>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin@gmail.com
-                        </a>
-                        <ul class="dropdown-menu mt-2">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Setting</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include"header.php"?>
     <!-- end header -->
 
     <div class="container-lg">
         <div class="row">
             <!-- sidebar -->
-            <div class="col-lg-3">
-                <nav class="navbar navbar-expand bg-light rounded-3 border mt-2 ">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 250px;">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <ul class="navbar-nav nav-pills flex-column justify-content-end flex-grow-1">
-                                    <li class="nav-item">
-                                        <a class="nav-link active link-light" aria-current="page" href="#"><i class="bi bi-house-door"></i> Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark" href="#"> <i class="bi bi-cart4"></i> Order</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark" href="#"><i class="bi bi-person-fill"></i> Customer</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark" href="#"><i class="bi bi-bag-x"></i> Product</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link link-dark" href="#"><i class="bi bi-clipboard2-data"></i> Report</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            <?php include"sidebar.php"?>
             <!-- end sidebar -->
 
             <!-- content -->
-            <div class="col-lg-9 bg-secondary mt-2">
-
-            </div>
+            <?php 
+                if(isset ($_GET['x'])&& $_GET['x']=='home'){
+                    include "home.php";
+                } 
+                elseif(isset ($_GET['x'])&& $_GET['x']=='order'){
+                    include "order.php";
+                } 
+                elseif(isset ($_GET['x'])&& $_GET['x']=='customer'){
+                    include "customer.php";
+                } 
+                elseif(isset ($_GET['x'])&& $_GET['x']=='product'){
+                    include "product.php";
+                } 
+                elseif(isset ($_GET['x'])&& $_GET['x']=='report'){
+                    include "report.php" ;
+                } 
+            ?>
             <!-- end content -->
+        </div>
+        <div class="fixed-bottom text-center mb-2">
+            Copyright 2022
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
