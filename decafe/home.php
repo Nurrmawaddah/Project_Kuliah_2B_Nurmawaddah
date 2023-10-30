@@ -5,8 +5,8 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Ini adalah bagian home</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum vero ipsum saepe nostrum dicta laboriosam omnis laudantium, incidunt est, aut atque dignissimos consequuntur numquam sint hic consectetur voluptates dolor cumque?
-                        </p>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.hdfvyejwhgfbuwekjugdbueekjhvdb wnmvbhswnmbxnjs,mdbyuyjhndnwkjs,jd,mwkdbuyhfdvuwejhdbuewjhdb jwnvccytfhvb uhjmbujdbueiydyuev nn cbdhjguejdgb</p>
+
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
