@@ -2,7 +2,7 @@
     $kolom = $_POST['kolom'];
     $cari = $_POST['cari'];
     $conn = mysqli_connect("localhost","root","","db_saya");
-    $hasil = mysqli_query($conn, "select * from bukutamu where &kolom like '%$cari%'");
+    $hasil = mysqli_query($conn, "SELECT * FROM bukutamu WHERE $kolom LIKE '$cari'");
     $jumlah = mysqli_num_rows($hasil);
     echo "<br>";
     echo "Ditemukan: $jumlah";

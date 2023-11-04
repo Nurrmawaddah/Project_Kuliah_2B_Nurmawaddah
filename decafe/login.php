@@ -201,7 +201,7 @@
             <p class="mt-5 mb-3 text-body-secondary">&copy; 2022-2024</p>
         </form>
     </main>
-    <Script>
+    <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
             'use strict'
@@ -221,7 +221,7 @@
                 }, false)
             })
         })() 
-        </Script>
+        </script>
         </body>
 
 </html>
