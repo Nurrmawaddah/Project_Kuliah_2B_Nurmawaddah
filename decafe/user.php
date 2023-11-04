@@ -26,7 +26,7 @@ while ($record = mysqli_fetch_array($query)) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate saction="proses/proses_input_user.php" method="POST">
+                            <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
@@ -86,17 +86,18 @@ while ($record = mysqli_fetch_array($query)) {
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" name="input_user_validate" value="12345">Save changes</button>
                                 </div>
-                                </class=>
+                            </form>
                         </div>
 
                     </div>
                 </div>
             </div>
             <!-- Akhir modal tambah user baru -->
-
-
+            <?php
+            foreach ($result as $row){
+                ?>
             <!-- Modal New -->
-            <div class="modal fade" id="ModalView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="ModalView <?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -104,12 +105,66 @@ while ($record = mysqli_fetch_array($query)) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input disabled type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" value="<?php echo $row['nama']?>">
+                                            <label for="floatingInput">Nama</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Nama.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input disabled type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username"value="<?php echo $row['username']?>"> 
+                                            <label for="floatingInput">Username</label>
+                                            <div class="invalid-feedback">
+                                                Masukkan Username.
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" value="<?php 
+                                                if($row['level']==1){
+                                                    echo"Admin";
+                                                }elseif($row['level']==2){
+                                                    echo"Kasir";
+                                                }elseif($row['level']==3){
+                                                    echo"Pelayan";
+                                                }elseif($row['level']==4){
+                                                    echo"Dapur";
+                                                }
+                                            ?>">
+                                            <label for="floatingInput">Level User</label>
+                                            <div class="invalid-feedback">
+                                                Pilih Level User.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-floating mb-3">
+                                            <input disabled type="number" class="form-control" id="floatingInput" placeholder="08xxxxxxx" name="nohp" value="<?php echo $row['nohp']?>">
+                                            <label for="floatingInput">No HP</label>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-floating mb-3">
+                                    <textarea  disabled class="form-control" id="" style="height: 100px" name="alamat">value="<?php echo $row['alamat']?>"</textarea>
+                                    <label for="floatingInput">Alamat</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    
                     </div>
                 </div>
             </div>
@@ -117,6 +172,7 @@ while ($record = mysqli_fetch_array($query)) {
             <!-- end modal view -->
 
             <?php
+            }
             if (empty($result)) {
                 echo "Data user tidak ada";
             } else {
@@ -147,7 +203,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td> <?php echo $row['level'] ?> </td>
                                     <td><?php echo $row['nohp'] ?></td>
                                     <td class="d-flex">
-                                        <button class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#ModalView"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#ModalView <?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i></button>
                                         <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </td>
