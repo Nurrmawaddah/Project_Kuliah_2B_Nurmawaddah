@@ -1,8 +1,8 @@
 <?php
-   // session_start();
-    if(!empty($_SESSION['username_decafe'])){
-        header('location:home');
-    }
+// session_start();
+if (!empty($_SESSION['username_decafe'])) {
+    header('location:home');
+}
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -15,16 +15,13 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>DeCafe - Aplikasi Pemesanan Cafe dan Minuman Cafe</title>
+    <title>DeCafe - Aplikasi Pemesanan Minuman dan Makanan Cafe</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="assets/css/login.css" rel="stylesheet">
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -106,7 +103,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="assets/CSS/login.css" rel="stylesheet">
+    <link href="sign-in.css" rel="stylesheet">
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
@@ -126,79 +123,35 @@
         </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-            <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                <use href="#circle-half"></use>
-            </svg>
-            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                        <use href="#sun-fill"></use>
-                    </svg>
-                    Light
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                        <use href="#moon-stars-fill"></use>
-                    </svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                    <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                        <use href="#circle-half"></use>
-                    </svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" width="1em" height="1em">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-        </ul>
-    </div>
-
-
-    <main class=" form-signin text-center w-100 m-auto">
-        <form class="needs-validation" novalidate action=" proses/proses_login.php" method="POST">
+    <main class="form-signin w-100 m-auto">
+        <form class="needs-validation" novalidate action="proses/proses_login.php" method="post">
             <i class="bi bi-cup-hot fs-1"></i>
             <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
-            <div class="form-floating text-center">
-                <input name="username" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+            <div class="form-floating">
+                <input name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                 <label for="floatingInput">Email address</label>
                 <div class="invalid-feedback">
-                    Masukkan email yang valid.
+                    Masukkan Email Anda.
                 </div>
-
             </div>
+
             <div class="form-floating">
-                <input name="password"type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
                 <div class="invalid-feedback">
-                    Masukkan password.
+                    Masukkan Password Anda.
                 </div>
             </div>
 
-            <div class=" text-center my-3">
+            <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">Remember me
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
                 </label>
             </div>
-            <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc"> Login</button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2022-2024</p>
+            <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
+            <p class="mt-5 mb-3 text-body-secondary">&copy; 1994 - <?php echo date("Y") ?></p>
         </form>
     </main>
     <script>
@@ -220,8 +173,9 @@
                     form.classList.add('was-validated')
                 }, false)
             })
-        })() 
-        </script>
-        </body>
+        })()
+    </script>
+
+</body>
 
 </html>

@@ -6,7 +6,7 @@ while ($record = mysqli_fetch_array($query)) {
 }
 ?>
 
-<div class="col-lg-9 mt-2">
+<div class="col-lg-9 mt-2 ">
     <div class="card">
         <div class="card-header">
             Halaman User
@@ -14,11 +14,10 @@ while ($record = mysqli_fetch_array($query)) {
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"> Tambah User</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah User</button>
                 </div>
             </div>
-
-            <!-- Modal Tambah User Baru -->
+            <!-- Modal tambah user -->
             <div class="modal fade" id="ModalTambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
@@ -34,7 +33,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" required>
                                             <label for="floatingInput">Nama</label>
                                             <div class="invalid-feedback">
-                                                Masukkan Nama.
+                                                Masukkan Nama User.
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +42,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required>
                                             <label for="floatingInput">Username</label>
                                             <div class="invalid-feedback">
-                                                Masukkan Username.
+                                                Masukkan Username User.
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +50,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-floating mb-3">
-                                            <select class="form-select" aria-label="Default select example" name="level" required>
+                                            <select class="form-select" aria-label="Default select example" name="level" require>
                                                 <option selected hidden value="">Pilih Level User</option>
                                                 <option value="1">Owner/Admin</option>
                                                 <option value="2">Kasir</option>
@@ -66,7 +65,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxx" name="nohp">
+                                            <input type="number" class="form-control" id="floatingInput" placeholder="08xxxxxxx" name="nohp">
                                             <label for="floatingInput">No HP</label>
                                         </div>
                                     </div>
@@ -74,14 +73,14 @@ while ($record = mysqli_fetch_array($query)) {
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" disabled value="12345" name="password">
+                                            <input type="password" class="form-control" id="floatingInput" placeholder="Password" disabled value="12345" name="password">
                                             <label for="floatingPassword">Password</label>
                                         </div>
                                     </div>
-                                    <div class="form-floating">
-                                        <textarea class="form-control" style="height:100px" name="alamat"></textarea>
-                                        <label for="floatingInput">Alamat</label>
-                                    </div>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" name="alamat" id="" style="height: 100px;"></textarea>
+                                    <label for="floatingInput">Alamat</label>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -92,14 +91,13 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                 </div>
             </div>
-            <!-- End Modal Tambah User Baru -->
+            <!-- end modal tambah user -->
 
 
             <?php
             foreach ($result as $row) {
             ?>
-
-                <!-- Modal View -->
+                <!-- Modal View-->
                 <div class="modal fade" id="ModalView<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -115,7 +113,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                 <input disabled type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" value="<?php echo $row['nama'] ?>">
                                                 <label for="floatingInput">Nama</label>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Nama.
+                                                    Masukkan Nama User.
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +122,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                 <input disabled type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" value="<?php echo $row['username'] ?>">
                                                 <label for="floatingInput">Username</label>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Username.
+                                                    Masukkan Username User.
                                                 </div>
                                             </div>
                                         </div>
@@ -132,21 +130,21 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-floating mb-3">
-                                                <select disabled class="form-select" aria-label="Default select example" required name="level" id="">
+                                                <select disabled class="form-select" aria-label="Default select example" require name="level" id="">
                                                     <?php
                                                     $data = array("Owner/Admin", "Kasir", "Pelayan", "Dapur");
                                                     foreach ($data as $key => $value) {
                                                         if ($row['level'] == $key + 1) {
-                                                            echo "<option selected value='$key'> $value</option>";
+                                                            echo "<option selected value = '$key'>$value</option>";
                                                         } else {
-                                                            echo "<option value='$key' $value='$key' $value</option>";
+                                                            echo "<option value = '$key'>$value</option>";
                                                         }
                                                     }
                                                     ?>
                                                 </select>
                                                 <label for="floatingInput">Level User</label>
                                                 <div class="invalid-feedback">
-                                                    Pilih Level User.
+                                                    Pilih level User.
                                                 </div>
                                             </div>
                                         </div>
@@ -157,8 +155,8 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <textarea disabled class="form-control" id="" style="height: 100px" name="alamat"><?php echo $row['alamat'] ?></textarea>
+                                    <div class="form-floating">
+                                        <textarea disabled class="form-control" name="alamat" id="" style="height: 100px;"><?php echo $row['alamat'] ?></textarea>
                                         <label for="floatingInput">Alamat</label>
                                     </div>
                                     <div class="modal-footer">
@@ -169,9 +167,9 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                 </div>
-                <!-- End Modal View -->
+                <!-- end modal view -->
 
-                <!-- Modal Edit -->
+                <!-- Modal edit-->
                 <div class="modal fade" id="ModalEdit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -185,19 +183,19 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" required value="<?php echo $row['nama'] ?>">
+                                                <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" name="nama" require value="<?php echo $row['nama'] ?>">
                                                 <label for="floatingInput">Nama</label>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Nama.
+                                                    Masukkan Nama User.
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input <?php echo ($row['username'] == $_SESSION['username_decafe']) ? 'disabled' : ''; ?> type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" required value="<?php echo $row['username'] ?>">
+                                                <input <?php echo ($row['username'] == $_SESSION['username_decafe']) ? 'disabled' : ''; ?> type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" require value="<?php echo $row['username'] ?>">
                                                 <label for="floatingInput">Username</label>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Username.
+                                                    Masukkkan Username User.
                                                 </div>
                                             </div>
                                         </div>
@@ -205,14 +203,14 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-floating mb-3">
-                                                <select class="form-select" aria-label="Default select example" required name="level" id="">
+                                                <select class="form-select" aria-label="Default select example" require name="level" id="">
                                                     <?php
                                                     $data = array("Owner/Admin", "Kasir", "Pelayan", "Dapur");
                                                     foreach ($data as $key => $value) {
                                                         if ($row['level'] == $key + 1) {
-                                                            echo "<option selected value=" . ($key + 1) . "> $value</option>";
+                                                            echo "<option selected value = " . ($key + 1) . ">$value</option>";
                                                         } else {
-                                                            echo "<option value=" . ($key + 1) . "> $value</option>";
+                                                            echo "<option value = " . ($key + 1) . ">$value</option>";
                                                         }
                                                     }
                                                     ?>
@@ -230,8 +228,8 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="" style="height: 100px" name="alamat"><?php echo $row['alamat'] ?></textarea>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" name="alamat" id="" style="height: 100px;"><?php echo $row['alamat'] ?></textarea>
                                         <label for="floatingInput">Alamat</label>
                                     </div>
                                     <div class="modal-footer">
@@ -243,16 +241,17 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                 </div>
-                <!-- End Modal Edit -->
+                <!-- end modal edit -->
 
 
-                <!-- Modal Delete -->
+
+                <!-- Modal delete-->
                 <div class="modal fade" id="ModalDelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data User</h1>
-                                <button type="button" class="btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_delete_user.php" method="POST">
@@ -260,24 +259,24 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="col-lg-12">
                                         <?php
                                         if ($row['username'] == $_SESSION['username_decafe']) {
-                                            echo "<div class='alert alert-danger'> Anda tidak dapat menghapus akun sendiri</div>";
+                                            echo "<div class='alert alert-danger'>Anda Tidak Dapat Menghapus Akun Sendiri</div>";
                                         } else {
-                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
+                                            echo "Apakah Anda Yakin Ingin Menghapus User <b>$row[username]</b>";
                                         }
                                         ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_decafe']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345" <?php echo ($row['username'] == $_SESSION['username_decafe']) ? 'disabled' : ''; ?>>Delete</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Modal Delete-->
+                <!-- end modal delete -->
 
-                <!-- Modal Reset Password-->
+                <!-- Modal reset password-->
                 <div class="modal fade" id="ModalResetPassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -291,10 +290,9 @@ while ($record = mysqli_fetch_array($query)) {
                                     <div class="col-lg-12">
                                         <?php
                                         if ($row['username'] == $_SESSION['username_decafe']) {
-                                            echo "<div class='alert alert-danger'> Anda tidak dapat mereset password sendiri</div>";
+                                            echo "<div class='alert alert-danger'>Anda Tidak Dapat Mereset Password Sendiri</div>";
                                         } else {
-                                            echo "Apakah anda yakin ingin mereset password user <b>$row[username]</b>
-                                                manjadi password bawaan sistem yaitu <b>password</b>";
+                                            echo "Apakah Anda Yakin Ingin Mereset password User <b>$row[username]</b> menjadi passsword bawaan sistem yaitu <b>PASSWORD</b>";
                                         }
                                         ?>
                                     </div>
@@ -307,7 +305,8 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                 </div>
-                <!-- End Modal Reset Password-->
+                <!-- end modal reset passsword -->
+
 
             <?php
             }
@@ -315,7 +314,6 @@ while ($record = mysqli_fetch_array($query)) {
                 echo "Data user tidak ada";
             } else {
             ?>
-
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -324,7 +322,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Level</th>
-                                <th scope="col">No Hp</th>
+                                <th scope="col">No HP</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -332,27 +330,25 @@ while ($record = mysqli_fetch_array($query)) {
                             <?php
                             $no = 1;
                             foreach ($result as $row) {
-
                             ?>
                                 <tr>
                                     <th scope="row"><?php echo $no++ ?></th>
                                     <td><?php echo $row['nama'] ?></td>
                                     <td><?php echo $row['username'] ?></td>
-                                    <td> <?php
-                                            if ($row['level'] == 1) {
-                                                echo "Admin";
-                                            } elseif ($row['level'] == 2) {
-                                                echo "Kasir";
-                                            } elseif ($row['level'] == 3) {
-                                                echo "Pelayan";
-                                            } elseif ($row['level'] == 4) {
-                                                echo "Dapur";
-                                            }
-                                            ?> 
-                                            </td>
-                                            <td>
-                                                <?php echo $row['nohp'] ?>
-                                            </td>
+                                    <td>
+                                        <?php
+                                        if ($row['level'] == 1) {
+                                            echo "Admin";
+                                        } elseif ($row['level'] == 2) {
+                                            echo "Kasir";
+                                        } elseif ($row['level'] == 3) {
+                                            echo "pelayan";
+                                        } elseif ($row['level'] == 4) {
+                                            echo "Dapur";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?php echo $row['nohp'] ?></td>
                                     <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id'] ?>"><i class="bi bi-pencil-square"></i></button>
@@ -372,3 +368,25 @@ while ($record = mysqli_fetch_array($query)) {
         </div>
     </div>
 </div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
