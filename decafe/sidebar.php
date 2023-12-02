@@ -14,8 +14,7 @@
                         <li class="nav-item">
                             <a class="nav-link ps-3 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'home') || !isset($_GET['x'])) ? 'active link-light' : 'link-dark'; ?>" aria-current="page" href="home"><i class="bi bi-house-door"></i> Dashboard</a>
                         </li>
-
-
+                        
                         <?php if($hasil['level']==1 || $hasil['level']==3) { ?>
 
                         <li class="nav-item">

@@ -1,6 +1,6 @@
 <?php
 // session_start();
-if (!empty($_SESSION['username_decafe'])) {
+if (!empty($_SESSION['username_kicikbook'])) {
     header('location:home');
 }
 ?>
@@ -20,7 +20,7 @@ if (!empty($_SESSION['username_decafe'])) {
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="assets/CSS/login.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -125,7 +125,7 @@ if (!empty($_SESSION['username_decafe'])) {
 
     <main class="form-signin w-100 m-auto text-center">
         <form class="needs-validation" novalidate action="proses/proses_login.php" method="post">
-            <i class="bi bi-book fs-1"></i>
+            <i class="bi bi-cup-hot fs-1"></i>
             <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
             <div class="form-floating">
