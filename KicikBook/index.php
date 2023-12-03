@@ -1,6 +1,8 @@
 <?php
 session_start();
-if (isset($_GET['x']) && $_GET['x'] == 'home') {
+if (isset($_GET['x'])){
+    include "main.php";
+}elseif (isset($_GET['x']) && $_GET['x'] == 'home') {
     $page = "home.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'user') {

@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 if (!empty($_SESSION['username_kicikbook'])) {
     header('location:home');
 }
@@ -124,7 +124,7 @@ if (!empty($_SESSION['username_kicikbook'])) {
     </svg>
 
     <main class="form-signin w-100 m-auto text-center">
-        <form class="needs-validation" novalidate action="proses/proses_login.php" method="post">
+        <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
             <i class="bi bi-cup-hot fs-1"></i>
             <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
