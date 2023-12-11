@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand navbar-dark bg-secondary sticky-top">
         <div class="container-lg">
             <a class="navbar-brand" href="."><i class="bi bi-book"></i> KicikBook</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">

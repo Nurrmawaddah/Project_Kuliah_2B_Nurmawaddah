@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!empty($_SESSION['username_kicikbook'])) {
     header('location:home');
 }
@@ -125,7 +124,7 @@ if (!empty($_SESSION['username_kicikbook'])) {
 
     <main class="form-signin w-100 m-auto text-center">
         <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
-            <i class="bi bi-cup-hot fs-1"></i>
+        <i class="bi bi-book fs-1"></i> 
             <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
             <div class="form-floating">
@@ -152,6 +151,9 @@ if (!empty($_SESSION['username_kicikbook'])) {
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
             <p class="mt-5 mb-3 text-body-secondary">&copy; 1994 - <?php echo date("Y") ?></p>
+            <a class="mt-5 mb-3 text-body-secondary">username = admin@gmail.com</a>
+            <br>
+            <a class="mt-5 mb-3 text-body-secondary">password = password</a>
         </form>
     </main>
     <script>

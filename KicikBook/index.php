@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (isset($_GET['x'])){
-    include "main.php";
-}elseif (isset($_GET['x']) && $_GET['x'] == 'home') {
+if (isset($_GET['x']) && $_GET['x'] == 'home') {
     $page = "home.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'user') {
@@ -16,6 +14,15 @@ if (isset($_GET['x'])){
 } elseif (isset($_GET['x']) && $_GET['x'] == 'katpupuk') {
         if ($_SESSION['level_kicikbook'] == 1 || $_SESSION['level_kicikbook'] == 2  || $_SESSION['level_kicikbook'] == 3) {
             $page = "katpupuk.php";
+            include "main.php";
+        } else {
+            $page = "home.php";
+            include "main.php";
+        }
+
+} elseif (isset($_GET['x']) && $_GET['x'] == 'stokbarang') {
+        if ($_SESSION['level_kicikbook'] == 1 || $_SESSION['level_kicikbook'] == 2  || $_SESSION['level_kicikbook'] == 3) {
+            $page = "stokbarang.php";
             include "main.php";
         } else {
             $page = "home.php";
@@ -49,4 +56,8 @@ if (isset($_GET['x'])){
     include "login.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'logout') {
     include "proses/proses_logout.php";
+}else {
+    $page = "login.php";
+    include "login.php";
 }
+?>

@@ -14,7 +14,7 @@ while ($record = mysqli_fetch_array($query)) {
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah Kategori Pupuk</button>
+                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah Kategori Pupuk</button>
                 </div>
             </div>
             <!-- Modal tambah kategori Pupuk-->
@@ -152,13 +152,13 @@ while ($record = mysqli_fetch_array($query)) {
             } else {
             ?>
                 <!-- table daftar kategori pupuk-->
-                <div class="table-responsive">
-                    <table class="table table-hover">
+                <div class="table-responsive mt-2">
+                    <table class="table table-hover" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Jenis Pupuk</th>
-                                <th scope="col">Kategori Pupuk</th>
+                                <th scope="col">Nama Kategori</th>
+                                <th scope="col">Deskripsi</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -169,11 +169,11 @@ while ($record = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
                                     <th scope="row"><?php echo $no++ ?></th>
-                                    <td><?php echo ($row['jenis_pupuk'] == 1) ? "Bubuk" : "Butir" ?></td>
-                                    <td><?php echo $row['kategori_pupuk'] ?></td>
+                                    <td><?php echo ($row['nama_kategori'] == 1) ? "Bubuk" : "Butir" ?></td>
+                                    <td><?php echo $row['deskripsi'] ?></td>
                                     <td class="d-flex">
-                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_kat_pupuk'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_kat_pupuk'] ?>"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_kategori'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_kategori'] ?>"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                             <?php

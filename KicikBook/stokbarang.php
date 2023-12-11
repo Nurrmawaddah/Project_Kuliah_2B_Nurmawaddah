@@ -1,23 +1,22 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_masuk LEFT JOIN tb_kat_pupuk ON tb_kat_pupuk.id_kategori = tb_masuk.id_kategori LEFT JOIN tb_user ON tb_user.id_user = tb_masuk.id_user");
+$query = mysqli_query($conn, "SELECT * FROM tb_stokbarang LEFT JOIN tb_barang ON tb_barang.id_pupuk = tb_stokbarang.id_pupuk");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 
-$select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori,deskripsi FROM tb_kat_pupuk");
-$select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
+$select_kat_pupuk = mysqli_query($conn, "SELECT id_pupuk,nama_pupuk FROM tb_barang");
 ?> 
 
 <div class="col-lg-9 mt-2 ">
     <div class="card">
         <div class="card-header">
-            Halaman Barang Masuk
+            Halaman Stok Barang
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah Barang Masuk</button>
+                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalTambahUser">Tambah Barang</button>
                 </div>
             </div>
             <!-- Modal tambah barang masuk-->
@@ -61,11 +60,11 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-floating mb-3">
-                                            <select class="form-select" aria-label="Default select example" name="kategori" require>
+                                            <select class="form-select" aria-label="Default select example" name="kat_pupuk" require>
                                                 <option selected hidden value="">Pilih Kategori Pupuk</option>
                                                 <?php
                                                 foreach ($select_kat_pupuk as $value) {
-                                                    echo "<option value=" . $value['id_kategori'] . ">$value[deskripsi]</option>";
+                                                    echo "<option value=" . $value['id_kat_pupuk'] . ">$value[kategori_pupuk]</option>";
                                                 }
                                                 ?>
 
@@ -78,7 +77,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingInput" placeholder="stok" name="jumlah" require>
+                                            <input type="number" class="form-control" id="floatingInput" placeholder="stok" name="stok" require>
                                             <label for="floatingInput">Stok</label>
                                             <div class="invalid-feedback">
                                                 Masukkan Stok.
@@ -104,7 +103,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
             foreach ($result as $row) {
         ?>
                 <!-- Modal view-->
-                <div class="modal fade" id="ModalView<?php echo $row['id_masuk'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalView<?php echo $row['id_stok'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -175,7 +174,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                 <!-- end modal view -->
 
                 <!-- Modal edit-->
-                <div class="modal fade" id="ModalEdit<?php echo $row['id_masuk'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalEdit<?php echo $row['id_stok'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -184,7 +183,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_edit_pupuk.php" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" value="<?php echo $row['id_masuk'] ?>" name="id_masuk">
+                                    <input type="hidden" value="<?php echo $row['id_pupuk'] ?>" name="id_pupuk">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="input-group mb-3">
@@ -221,9 +220,9 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                                                     <?php
                                                     foreach ($select_kat_menu as $value) {
                                                         if ($row['kategori'] == $value['id_kat_pupuk']) {
-                                                            echo "<option selected value=" . $value['id_kat_pupuk'] . ">$value[kategori_pupuk]</option>";
+                                                            echo "<option selected value=" . $value['id_kategori'] . ">$value[kategori_pupuk]</option>";
                                                         } else {
-                                                            echo "<option value=" . $value['id_kat_pupuk'] . ">$value[kategori_pupuk]</option>";
+                                                            echo "<option value=" . $value['id_kategori'] . ">$value[kategori_pupuk]</option>";
                                                         }
                                                     }
                                                     ?>
@@ -259,7 +258,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
 
 
                 <!-- Modal delete-->
-                <div class="modal fade" id="ModalDelete<?php echo $row['id_masuk'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalDelete<?php echo $row['id_stok'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -268,7 +267,7 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_delete_pupuk.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id_masuk'] ?>" name="id_masuk">
+                                    <input type="hidden" value="<?php echo $row['id_pupuk'] ?>" name="id_pupuk">
                                     <input type="hidden" value="<?php echo $row['foto'] ?>" name="foto">
                                     <div class="col-lg-12">
                                         Apakah anda inggin menghapus data pupuk ini <b><?php echo $row['nama_pupuk'] ?></b>
@@ -289,18 +288,15 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
             }
 
             ?>
-            <div class="table-responsive ms-3 me-3">
-                <table class="table table-hover"id="example">
+            <div class="table-responsive ms-3 mt-2 me-3">
+                <table class="table table-hover" id="example">
                     <thead>
                         <tr class="text-nowap">
                             <th scope="col">No</th>
                             <th scope="col">Foto Pupuk</th>
                             <th scope="col">Nama Pupuk</th>
                             <th scope="col">Keterangan</th>
-                            <th scope="col">Kategori</th>
-                            <th scope="col">Kasir</th>
                             <th scope="col">Stok</th>
-                            <th scope="col">Waktu Masuk</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -316,15 +312,12 @@ $select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
                                 </td>
                                 <td><?php echo $row['nama_pupuk'] ?></td>
                                 <td><?php echo $row['keterangan'] ?></td>
-                                <td><?php echo ($row['id_kategori'] == 1) ? "Bubuk" : "Butir" ?></td>
-                                <td><?php echo $row['id_user'] ?></td>
                                 <td><?php echo $row['jumlah'] ?></td>
-                                <td><?php echo $row['waktu_masuk'] ?></td>
                                 <td>
                                     <div class="d-flex">
-                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_masuk'] ?>"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_masuk'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_masuk'] ?>"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_stok'] ?>"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_stok'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_stok'] ?>"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>

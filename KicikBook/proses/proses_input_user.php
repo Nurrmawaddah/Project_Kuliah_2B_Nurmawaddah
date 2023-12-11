@@ -4,7 +4,7 @@ $name = (isset($_POST['nama'])) ? htmlentities($_POST['nama']) : "";
 $username = (isset($_POST['username'])) ? htmlentities($_POST['username']) : "";
 $level = (isset($_POST['level'])) ? htmlentities($_POST['level']) : "";
 $nohp = (isset($_POST['nohp'])) ? htmlentities($_POST['nohp']) : "";
-$alamat = (isset($_POST['alamat'])) ? htmlentities($_POST['alamat']) : "";
+
 $password = md5('password');
 
 if(!empty($_POST['input_user_validate'])){
@@ -13,7 +13,7 @@ if(!empty($_POST['input_user_validate'])){
         $message = '<script>alert("Username yang dimasukan telah ada")
         window.location="../user"</script>';
     }else{
-        $query = mysqli_query($conn, "INSERT INTO tb_user(nama,username,password,level,nohp,alamat)values('$name','$username','$password','$level','$nohp','$alamat')");
+        $query = mysqli_query($conn, "INSERT INTO tb_user(nama,username,password,level,nohp)values('$name','$username','$password','$level','$nohp')");
         if($query){
             $message = '<script>alert("Data berhasil dimasukkan")
             window.location="../user"</script>';
