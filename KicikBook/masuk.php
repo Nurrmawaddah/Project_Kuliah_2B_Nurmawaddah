@@ -6,7 +6,7 @@ while ($record = mysqli_fetch_array($query)) {
 }
 
 $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori,deskripsi FROM tb_kat_pupuk");
-$select_user = mysqli_query($conn, "SELECT id_user,level FROM tb_user");
+$select_user = mysqli_query($conn, "SELECT id_user,nama FROM tb_user");
 ?> 
 
 <div class="col-lg-9 mt-2 ">
