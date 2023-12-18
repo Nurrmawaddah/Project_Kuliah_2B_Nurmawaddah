@@ -8,6 +8,7 @@ if (!empty($_POST['submit_validate'])) {
     $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username' && password = '$password'");
     $hasil = mysqli_fetch_array($query);
     if ($hasil) {
+        $_SESSION['id_user_kicikbook'] = $hasil['id_user'];
         $_SESSION['username_kicikbook'] = $username;
         $_SESSION['level_kicikbook'] = $hasil['level'];
         header('location:../home');

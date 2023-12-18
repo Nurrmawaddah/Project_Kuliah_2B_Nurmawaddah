@@ -14,7 +14,7 @@ if (!empty($_SESSION['username_kicikbook'])) {
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>DeCafe - Aplikasi Pemesanan Minuman dan Makanan Cafe</title>
+    <title>KicikBook - Aplikasi Stok Barang</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -149,7 +149,7 @@ if (!empty($_SESSION['username_kicikbook'])) {
                     Remember me
                 </label>
             </div>
-            <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abc">Login</button>
+            <button class="btn" style="background-color: violet; color: white; width: 100%; padding: 0.5rem 1rem;" type="submit" name="submit_validate" value="abc">Login</button>
             <p class="mt-5 mb-3 text-body-secondary">&copy; 1994 - <?php echo date("Y") ?></p>
             <a class="mt-5 mb-3 text-body-secondary">username = admin@gmail.com</a>
             <br>
