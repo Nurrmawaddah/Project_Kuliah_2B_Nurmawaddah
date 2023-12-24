@@ -28,26 +28,48 @@ while ($record = mysqli_fetch_array($query)) {
                         <div class="modal-body">
                             <form class="needs-validation" novalidate action="proses/proses_input_katpupuk.php" method="POST">
                                 <div class="row">
+                                    
                                     <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <select class="form-select" name="jenispupuk" id="">
-                                                <option value="1">Akar</option>
-                                                <option value="2">Buah</option>
-                                                <option value="3">Daun</option>
-                                                <option value="4">Batang</option>
-                                            </select>
-                                            <label for="floatingInput">Jenis Pupuk</label>
-                                            <div class="invalid-feedback">
-                                                Masukkan Jenis Pupuk.
+                                            <div class="form-floating mb-3">
+                                            <input type="hidden" value="<?php echo $row['nama_kategori'] ?>" name="id">
+                                            <select class="form-select" aria-label="Default select example" require name="namakategori" id="">
+                                            <option selected hidden value="">Pilih Kategori Pupuk</option>
+                                                    <?php
+                                                    $data = array("Butir", "Bubuk");
+                                                    foreach ($data as $key => $value) {
+                                                        if ($row['nama_kategori'] == $key + 1) {
+                                                            echo "<option selected value = " . ($key + 1) . ">$value</option>";
+                                                        } else {
+                                                            echo "<option value = " . ($key + 1) . ">$value</option>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <label for="floatingInput">Kategori Pupuk</label>
+                                                <div class="invalid-feedback">
+                                                    Masukkan Katergori Pupuk.
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                        <div class="col-lg-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingInput" placeholder="Kategori Pupuk" name="deskripsi" required>
-                                            <label for="floatingInput">Kategori Pupuk</label>
+                                        <input type="hidden" value="<?php echo $row['deskripsi'] ?>" name="id">
+                                        <select class="form-select" aria-label="Default select example" require name="jenispupuk" id="">
+                                        <option selected hidden value="">Pilih Deskripsi Kategori</option>
+                                                    <?php
+                                                    $data = array("Akar", "Buah", "Daun", "Batang");
+                                                    foreach ($data as $key => $value) {
+                                                        if ($row['deskripsi'] == $key + 1) {
+                                                            echo "<option selected value = " . ($key + 1) . ">$value</option>";
+                                                        } else {
+                                                            echo "<option value = " . ($key + 1) . ">$value</option>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            <label for="floatingInput">Deskripsi Pupuk</label>
                                             <div class="invalid-feedback">
-                                                Masukkan Kategori Pupuk.
+                                                Masukkan Deskripsi Pupuk.
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +105,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     <?php
                                                     $data = array("Akar", "Buah", "Daun", "Batang");
                                                     foreach ($data as $key => $value) {
-                                                        if ($row['jenis_pupuk'] == $key + 1) {
+                                                        if ($row['deskripsi'] == $key + 1) {
                                                             echo "<option selected value = " . ($key + 1) . ">$value</option>";
                                                         } else {
                                                             echo "<option value = " . ($key + 1) . ">$value</option>";
@@ -91,15 +113,28 @@ while ($record = mysqli_fetch_array($query)) {
                                                     }
                                                     ?>
                                                 </select>
-                                                <label for="floatingInput">Jenis Pupuk</label>
+                                                <label for="floatingInput">Deskripsi Kategori Pupuk</label>
                                                 <div class="invalid-feedback">
-                                                    Masukkan Jenis Pupuk.
+                                                    Masukkan Deskripsi Kategori Pupuk.
                                                 </div>
                                             </div>
                                         </div>
+                                
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="floatingInput" placeholder="Kategori Pupuk" name="katpupuk" required value="<?php echo $row['nama_kategori'] ?>">
+                                            <input type="hidden" value="<?php echo $row['nama_kategori'] ?>" name="id">
+                                            <select class="form-select" aria-label="Default select example" require name="namakategori" id="">
+                                                    <?php
+                                                    $data = array("Butir", "Bubuk");
+                                                    foreach ($data as $key => $value) {
+                                                        if ($row['nama_kategori'] == $key + 1) {
+                                                            echo "<option selected value = " . ($key + 1) . ">$value</option>";
+                                                        } else {
+                                                            echo "<option value = " . ($key + 1) . ">$value</option>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
                                                 <label for="floatingInput">Kategori Pupuk</label>
                                                 <div class="invalid-feedback">
                                                     Masukkan Katergori Pupuk.
@@ -170,7 +205,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <tr>
                                     <th scope="row"><?php echo $no++ ?></th>
                                     <td><?php echo ($row['nama_kategori'] == 1) ? "Bubuk" : "Butir" ?></td>
-                                    <td><?php echo $row['deskripsi'] ?></td>
+                                    <td><?php echo $row['deskripsi']?></td>
                                     <td class="d-flex">
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_kategori'] ?>"><i class="bi bi-pencil-square"></i></button>
                                         <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_kategori'] ?>"><i class="bi bi-trash"></i></button>

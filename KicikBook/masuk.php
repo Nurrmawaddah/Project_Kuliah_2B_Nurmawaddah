@@ -75,7 +75,7 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-floating mb-3">
@@ -106,7 +106,7 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn"style="background-color :violet;" name="input_menu_validate" value="12345">Save changes</button>
+                            <button type="submit" class="btn" style="background-color :violet;" name="input_menu_validate" value="12345">Save changes</button>
                         </div>
                         </form>
                     </div>
@@ -150,7 +150,7 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                                             </div>
                                         </div>
                                         <div class="row">
-
+                                        
                                             <div class="col-lg-6">
                                                 <div class="form-floating mb-3">
                                                     <input disabled type="text" class="form-control" id="floatingInput" placeholder="nama pupuk" name="Kasir" required value="<?php echo $row['Kasir'] ?>">
@@ -195,7 +195,7 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="input-group mb-3">
-                                                    <input type="file" class="form-control py-3" id="uploadFoto" placeholder="Your Name" name="foto" required>
+                                                    <input type="file" class="form-control py-3" id="uploadFoto" placeholder="Your Name" name="foto" required value="<?php echo $row['foto'] ?>">
                                                     <label class="input-group-text" for="uploadFoto">Upload Photo Pupuk</label>
                                                     <div class="invalid-feedback">
                                                         Masukkan Foto
@@ -241,34 +241,6 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                     <!-- end modal edit -->
 
 
-
-                    <!-- Modal delete-->
-                    <div class="modal fade" id="ModalDelete<?php echo $row['id_pupuk'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-fullscreen-md-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Data Pupuk</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="needs-validation" novalidate action="proses/proses_delete_pupuk.php" method="POST">
-                                        <input type="hidden" value="<?php echo $row['id_pupuk'] ?>" name="id_pupuk  ">
-                                        <input type="hidden" value="<?php echo $row['foto'] ?>" name="foto">
-                                        <div class="col-lg-12">
-                                            Apakah anda inggin menghapus data pupuk ini <b><?php echo $row['Nama Pupuk'] ?></b>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-danger" name="input_user_validate" value="12345">Delete</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end modal delete -->
-
-
                 <?php
                 }
 
@@ -308,7 +280,6 @@ $select_kat_pupuk = mysqli_query($conn, "SELECT id_kategori, deskripsi FROM tb_k
                                         <div class="d-flex">
                                             <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_pupuk'] ?>"><i class="bi bi-eye"></i></button>
                                             <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_pupuk'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalDelete<?php echo $row['id_pupuk'] ?>"><i class="bi bi-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>

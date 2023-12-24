@@ -170,7 +170,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_edit_user.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id_user">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
@@ -242,7 +242,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_delete_user.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id_user">
                                     <div class="col-lg-12">
                                         <?php
                                         if ($row['username'] == $_SESSION['username_kicikbook']) {
